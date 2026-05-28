@@ -21,7 +21,7 @@ class Notes extends CI_Controller
 
         if (
             empty($data['title']) ||
-            empty($data['content'] || empty($data['Summary']))
+            empty($data['content'] || empty($data['summary']))
         ) {
 
             http_response_code(400);
@@ -37,7 +37,7 @@ class Notes extends CI_Controller
         $insert = [
             'title' => trim($data['title']),
             'content' => trim($data['content']),
-            'Summary' => trim($data['Summary'])
+            'summary' => trim($data['summary'])
         ];
 
         $this->Note_model->create_note($insert);

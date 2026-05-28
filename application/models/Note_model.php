@@ -56,6 +56,7 @@ class Note_model extends CI_Model
             ->group_start()
             ->like('title', $keyword)
             ->or_like('content', $keyword)
+            ->or_like('summary', $keyword)     
             ->group_end()
             ->get('notes')
             ->result();

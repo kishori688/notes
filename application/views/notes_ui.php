@@ -30,7 +30,10 @@
             <textarea id="content"
                       class="form-control mb-2"
                       placeholder="Enter content"></textarea>
-
+            <textarea id="summary"
+                      class="form-control mb-2"
+                      placeholder="Enter summary"></textarea>
+            
             <button class="btn btn-primary"
                     onclick="createNote()">
                 Create Note
@@ -122,6 +125,8 @@ function loadNotes(page = 1)
                             <h5>${note.title}</h5>
 
                             <p>${note.content}</p>
+                                        
+                            <p>${note.summary}</p>            
 
                             <small>
                                 ${note.created_at}
@@ -160,6 +165,8 @@ function createNote()
     let title = $('#title').val();
 
     let content = $('#content').val();
+    
+    let summary = $('#summary').val();
 
     $.ajax({
         url:
@@ -171,7 +178,8 @@ function createNote()
 
         data: JSON.stringify({
             title: title,
-            content: content
+            content: content,
+            summary: summary
         }),
 
         success: function(response)
@@ -180,6 +188,7 @@ function createNote()
 
             $('#title').val('');
             $('#content').val('');
+            $('#summary').val('');
 
             loadNotes(currentPage);
         }
@@ -223,7 +232,8 @@ function showUpdatePrompt(id)
 
         data: {
             title: title,
-            content: content
+            content: content,
+            summary: summary
         },
 
         success: function(response)
@@ -278,7 +288,8 @@ function searchNotes()
                             <h5>${note.title}</h5>
 
                             <p>${note.content}</p>
-
+                                        
+                             <p>${note.summary}</p>
                         </div>
                     </div>
                 `;
